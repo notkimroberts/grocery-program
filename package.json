@@ -5,7 +5,7 @@
 	"type": "module",
 	"engines": {
 		"bun": "1.2.X",
-		"node": "22.12.0"
+		"node": "22.X"
 	},
 	"scripts": {
 		"dev": "bun run vite dev",
