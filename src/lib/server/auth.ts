@@ -1,3 +1,4 @@
+/*
 import { sha256 } from '@oslojs/crypto/sha2'
 import { encodeBase64url, encodeHexLowerCase } from '@oslojs/encoding'
 import type { RequestEvent } from '@sveltejs/kit'
@@ -79,3 +80,4 @@ export function deleteSessionTokenCookie(event: RequestEvent) {
         path: '/',
     })
 }
+*/

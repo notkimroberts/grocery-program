@@ -1,3 +1,4 @@
+/*
 import { fail, redirect } from '@sveltejs/kit'
 import { getRequestEvent } from '$app/server'
 import * as auth from '$lib/server/auth'
@@ -29,3 +30,4 @@ function requireLogin() {
 
     return locals.user
 }
+*/
