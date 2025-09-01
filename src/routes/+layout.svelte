@@ -1,7 +1,6 @@
 <script lang="ts">
+    import { ModeWatcher } from 'mode-watcher'
     import favicon from '$lib/assets/favicon.svg'
-    import AppSidebar from '$lib/components/app-sidebar.svelte'
-    import * as Sidebar from '$lib/components/ui/sidebar/index.js'
     import '../app.css'
 
     let { children } = $props()
@@ -11,10 +10,5 @@
     <link rel="icon" href={favicon} />
 </svelte:head>
 
-<Sidebar.Provider>
-    <AppSidebar />
-    <main>
-        <Sidebar.Trigger />
-        {@render children?.()}
-    </main>
-</Sidebar.Provider>
+<ModeWatcher />
+{@render children?.()}
