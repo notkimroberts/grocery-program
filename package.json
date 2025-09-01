@@ -13,7 +13,7 @@
         "url": "https://github.com/notkimroberts/grocery-program"
     },
     "scripts": {
-        "build": "bun --bun run vite build",
+        "build": "bun run vite build",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "clean": "rm -rf .svelte-kit && rm -rf build && rm -rf node_modules/.vite",
