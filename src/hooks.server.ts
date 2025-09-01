@@ -1,9 +1,13 @@
-/*
 import type { Handle } from '@sveltejs/kit'
-import * as auth from '$lib/server/auth'
+import { SESSION_COOKIE_NAME } from '$lib/server/auth/constants'
+import {
+    setSessionTokenCookie,
+    deleteSessionTokenCookie,
+    validateSessionToken,
+} from '$lib/server/auth/utils'
 
 const handleAuth: Handle = async ({ event, resolve }) => {
-    const sessionToken = event.cookies.get(auth.sessionCookieName)
+    const sessionToken = event.cookies.get(SESSION_COOKIE_NAME)
 
     if (!sessionToken) {
         event.locals.user = null
@@ -11,12 +15,12 @@ const handleAuth: Handle = async ({ event, resolve }) => {
         return resolve(event)
     }
 
-    const { session, user } = await auth.validateSessionToken(sessionToken)
+    const { session, user } = await validateSessionToken(sessionToken)
 
     if (session) {
-        auth.setSessionTokenCookie(event, sessionToken, session.expiresAt)
+        setSessionTokenCookie(event, sessionToken, session.expiresAt)
     } else {
-        auth.deleteSessionTokenCookie(event)
+        deleteSessionTokenCookie(event)
     }
 
     event.locals.user = user
@@ -25,4 +29,3 @@ const handleAuth: Handle = async ({ event, resolve }) => {
 }
 
 export const handle: Handle = handleAuth
-*/
