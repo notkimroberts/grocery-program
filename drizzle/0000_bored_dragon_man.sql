@@ -23,8 +23,8 @@ CREATE TABLE "neighbors" (
 	"phone" text,
 	"address" text,
 	"nationality" text,
-	"createdAt" timestamp with time zone NOT NULL,
-	"updatedAt" timestamp with time zone NOT NULL
+	"createdAt" timestamp with time zone DEFAULT now() NOT NULL,
+	"updatedAt" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "session" (

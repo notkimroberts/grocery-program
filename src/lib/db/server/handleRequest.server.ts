@@ -1,4 +1,3 @@
-/*
 import type { RequestEvent } from '@sveltejs/kit'
 import { error, json } from '@sveltejs/kit'
 import {
@@ -26,18 +25,11 @@ import { getDb } from '.'
 import { get, set } from '../../general/utils'
 import * as tables from '../tables'
 
-export function handleRequest<T extends PgTable<TableConfig>>(
-    table: T,
-    { utils = {}, prepared = {} } = {},
-) {
+export function handleRequest<T extends PgTable<TableConfig>>(table: T, { utils = {} } = {}) {
     const tableName = getTableName(table)
     return async ({ request, params, url }: RequestEvent) => {
         const { method } = request
         const util = utils[url.searchParams.get('__util')] ?? ((arg: any) => Promise.resolve(arg))
-        const prepare = prepared[url.searchParams.get('__prepared')]
-        if (url.searchParams.get('__prepared') && !prepare) {
-            return error(500, `Prepared statement ${url.searchParams.get('__prepared')} not found.`)
-        }
         const db = getDb()
         const query = parseQueryFromUrl({ params, table, url })
         const { id } = params
@@ -45,19 +37,7 @@ export function handleRequest<T extends PgTable<TableConfig>>(
         let data
         let status = 200
         try {
-            if (prepare) {
-                data = await util(
-                    prepare.execute({
-                        id,
-                        ...Object.fromEntries(url.searchParams.entries()),
-                    }),
-                )
-                if (!data) {
-                    const error = new Error('Not Found')
-                    error.status = 404
-                    throw error
-                }
-            } else if (method === 'POST') {
+            if (method === 'POST') {
                 data = await db.insert(table).values(body).returning()
                 data = Array.isArray(body) ? data : data[0]
                 status = 201
@@ -263,4 +243,3 @@ function parseSelector(table, selector, field) {
     }
     return { relation, column, path }
 }
-*/

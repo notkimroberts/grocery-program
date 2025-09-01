@@ -6,6 +6,6 @@ export const neighbors = pgTable('neighbors', {
     phone: text('phone'),
     address: text('address'),
     nationality: text('nationality'),
-    createdAt: timestamp('createdAt', { withTimezone: true, mode: 'date' }).notNull(),
-    updatedAt: timestamp('updatedAt', { withTimezone: true, mode: 'date' }).notNull(),
+    createdAt: timestamp('createdAt', { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp('updatedAt', { withTimezone: true }).notNull().defaultNow(),
 })
