@@ -64,7 +64,6 @@ export function handleRequest<T extends PgTable<TableConfig>>(table: T, { utils 
                     error.status = 404
                     throw error
                 }
-                //parseParams(query, url.searchParams)
             } else if (method === 'GET') {
                 data = await util(db.query[tableName].findMany(query))
             } else {
