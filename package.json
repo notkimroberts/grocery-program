@@ -19,7 +19,7 @@
         "clean": "rm -rf .svelte-kit && rm -rf build && rm -rf node_modules/.vite",
         "db:generate": "drizzle-kit generate",
         "db:migrate": "drizzle-kit migrate",
-        "db:nuke": "",
+        "db:seed": "bun scripts/seedDb.ts",
         "db:push": "drizzle-kit push",
         "db:start": "docker compose up",
         "db:studio": "drizzle-kit studio",
