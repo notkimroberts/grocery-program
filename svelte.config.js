@@ -7,11 +7,6 @@ log('loaded svelte-config')
 const production = process.env.NODE_ENV === 'production'
 
 const config = {
-    compilerOptions: {
-        experimental: {
-            async: true,
-        },
-    },
     runes: true,
     preprocess: vitePreprocess(),
     kit: { adapter: adapter({ preprocess: true }) },
