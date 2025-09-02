@@ -1,6 +1,3 @@
 {
-    "terminal.integrated.env.osx": {
-        "NODE_ENV": "development"
-    },
     "editor.formatOnSave": true
 }
