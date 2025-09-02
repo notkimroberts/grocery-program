@@ -4,6 +4,7 @@
 
     let { data }: PageProps = $props()
     let { neighbors } = $derived(data)
+    $inspect(neighbors)
 </script>
 
 <Table.Root>
@@ -17,13 +18,17 @@
         </Table.Row>
     </Table.Header>
     <Table.Body>
-        <Table.Row>
-                {#each neighbors as { id, firstName, lastName, phone, metadata }}
+        {#each neighbors as { id, firstName, lastName, phone, metadata }}
+            <Table.Row>
                 <Table.Cell>{id}</Table.Cell>
                 <Table.Cell>{firstName}</Table.Cell>
                 <Table.Cell>{lastName}</Table.Cell>
                 <Table.Cell>{phone}</Table.Cell>
-                <Table.Cell>{metadata}</Table.Cell>
+                <Table.Cell>
+                    <code>
+                        {JSON.stringify(metadata, null, 2)}
+                    </code>
+                </Table.Cell>
             </Table.Row>
         {/each}
     </Table.Body>
