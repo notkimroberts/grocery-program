@@ -9,21 +9,21 @@
 <Table.Root>
     <Table.Header>
         <Table.Row>
-            {#each Object.keys(neighbors[0] ?? {}) as key}
-                <Table.Head>{key}</Table.Head>
-            {/each}
+            <Table.Head>ID</Table.Head>
+            <Table.Head>First</Table.Head>
+            <Table.Head>Last</Table.Head>
+            <Table.Head>Phone</Table.Head>
+            <Table.Head>Metadata</Table.Head>
         </Table.Row>
     </Table.Header>
     <Table.Body>
-        {#each neighbors as { id, name, age, address, nationality, phone, createdAt, updatedAt }}
-            <Table.Row>
+        <Table.Row>
+                {#each neighbors as { id, firstName, lastName, phone, metadata }}
                 <Table.Cell>{id}</Table.Cell>
-                <Table.Cell>{name}</Table.Cell>
+                <Table.Cell>{firstName}</Table.Cell>
+                <Table.Cell>{lastName}</Table.Cell>
                 <Table.Cell>{phone}</Table.Cell>
-                <Table.Cell>{address}</Table.Cell>
-                <Table.Cell>{nationality}</Table.Cell>
-                <Table.Cell>{createdAt}</Table.Cell>
-                <Table.Cell>{updatedAt}</Table.Cell>
+                <Table.Cell>{metadata}</Table.Cell>
             </Table.Row>
         {/each}
     </Table.Body>

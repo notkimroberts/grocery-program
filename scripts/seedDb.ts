@@ -12,12 +12,12 @@ async function seedDb() {
         log('got db...')
         await seed(db, { neighbors }, { count: 1 }).refine((funcs) => ({
             neighbors: {
-                count: 200,
+                count: 20,
                 columns: {
-                    name: funcs.firstName(),
+                    firstName: funcs.firstName(),
+                    lastName: funcs.lastName(),
                     phone: funcs.phoneNumber({ template: '(###) ###-####' }),
-                    address: funcs.streetAddress(),
-                    nationality: funcs.country(),
+                    metadata: funcs.json(),
                 },
             },
         }))
