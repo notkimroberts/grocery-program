@@ -1,10 +1,9 @@
 import type { Neighbors } from '$lib/db/types'
-import { newUrl } from '$lib/general/utils'
+import type { RetrieveHandlerOptions } from '$lib/general/types'
+import { retrieve } from '$lib/general/utils/retrieve'
 
-export async function retrieveNeighbors() {
-    const url = newUrl('/api/neighbors')
-    const res = await fetch(url)
-    if (res.ok) {
-        return (await res.json()) as Neighbors[]
-    }
+type NeighborsList = Neighbors[]
+
+export async function retrieveNeighbors(options: RetrieveHandlerOptions = {}) {
+    return await retrieve<NeighborsList>({ ...options })('/api/neighbors')
 }

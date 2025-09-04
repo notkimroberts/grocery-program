@@ -1,9 +1,8 @@
-import type { Neighbors } from '$lib/db/types'
 import { retrieveNeighbors } from '$lib/neighbors/utils'
 import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async ({}) => {
+export const load: PageServerLoad = async ({ fetch }) => {
     return {
-        neighbors: await retrieveNeighbors<Neighbors[]>(),
+        neighbors: retrieveNeighbors({ fetch }),
     }
 }

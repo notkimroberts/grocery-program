@@ -1,0 +1,2 @@
+- handle local and prod hosts (i.e. PUBLIC_APP_URL)
+- drizzle rest api handler

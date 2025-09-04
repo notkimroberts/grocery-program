@@ -1,3 +1,4 @@
 export { get } from './get'
-export { newUrl } from './newUrl'
+export { parseBody } from './parseBody'
 export { set } from './set'
+export { verifyFetchStatus } from './verifyFetchStatus'

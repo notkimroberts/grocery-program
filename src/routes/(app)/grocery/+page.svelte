@@ -4,7 +4,6 @@
 
     let { data }: PageProps = $props()
     let { neighbors } = $derived(data)
-    $inspect(neighbors)
 </script>
 
 <Table.Root>
@@ -18,18 +17,28 @@
         </Table.Row>
     </Table.Header>
     <Table.Body>
-        {#each neighbors as { id, firstName, lastName, phone, metadata }}
+        {#await neighbors}
             <Table.Row>
-                <Table.Cell>{id}</Table.Cell>
-                <Table.Cell>{firstName}</Table.Cell>
-                <Table.Cell>{lastName}</Table.Cell>
-                <Table.Cell>{phone}</Table.Cell>
-                <Table.Cell>
-                    <code>
-                        {JSON.stringify(metadata, null, 2)}
-                    </code>
-                </Table.Cell>
+                <Table.Cell colspan={Infinity}>Loading...</Table.Cell>
             </Table.Row>
-        {/each}
+        {:then rows}
+            {#each rows as { id, firstName, lastName, phone, metadata }}
+                <Table.Row>
+                    <Table.Cell>{id}</Table.Cell>
+                    <Table.Cell>{firstName}</Table.Cell>
+                    <Table.Cell>{lastName}</Table.Cell>
+                    <Table.Cell>{phone}</Table.Cell>
+                    <Table.Cell>
+                        <code>
+                            {JSON.stringify(metadata, null, 2)}
+                        </code>
+                    </Table.Cell>
+                </Table.Row>
+            {/each}
+        {:catch e}
+            <Table.Row>
+                <Table.Cell colspan={Infinity}>{e}</Table.Cell>
+            </Table.Row>
+        {/await}
     </Table.Body>
 </Table.Root>
