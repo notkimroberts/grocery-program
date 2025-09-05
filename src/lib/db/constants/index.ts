@@ -1,0 +1,1 @@
+export { TABLES } from './TABLES'

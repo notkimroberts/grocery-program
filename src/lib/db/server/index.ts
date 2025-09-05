@@ -1,2 +1,2 @@
 export { getDb } from './getDb.server'
-export { handleRequest } from './handleRequest.server'
+export { getTable } from './getTable.server'
